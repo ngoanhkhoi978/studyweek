@@ -27,3 +27,14 @@ export function getCurrentWeek(startOfWeek) {
     const currentWeek = startWeek + weeksPassed;
     return currentWeek;
 }
+
+export function isToday(dateString) {
+    // Lấy ngày hiện tại
+    const today = new Date();
+    
+    // Chuyển đổi ngày thành định dạng "DD/MM"
+    const currentDay = today.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit' });
+
+    // So sánh
+    return currentDay === dateString;
+}
