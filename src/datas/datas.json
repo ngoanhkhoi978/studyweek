@@ -2,22 +2,22 @@
   "schedule":
     {
       "Monday": [
-        { "subject": "Triết học Mác-Lênin", "periods": [8,10], "type": "all","room":"P.I.5" ,"color":"#fff"}
+        { "subject": "Triết học Mác-Lênin", "periods": [8,10], "type": "all","room":"P.I.5" ,"color":"#314e34"}
       ],
       "Tuesday": [
-        { "subject": "Kỹ năng tạo động lực cho bản thân", "periods": [8,9], "type": "all","room":"E.II.1" ,"color":"#fff"}
+        { "subject": "Kỹ năng tạo động lực cho bản thân", "periods": [8,9], "type": "all","room":"E.II.1" ,"color":"#4d5233"}
       ],
       "Wednesday": [
-        { "subject": "Tin học", "periods": [1,2], "type": "even","room":"B.III.6" ,"color":"#fff"},
-        { "subject": "Lịch sử tâm lý học", "periods": [6,7], "type": "all","room":"C.III.3" ,"color":"#fff"},
-        { "subject": "Sinh lý học thần kinh", "periods": [8,9], "type": "all","room":"C.III.5" ,"color":"#fff"}
+        { "subject": "Tin học", "periods": [1,2], "type": "even","room":"B.III.6" ,"color":"#334b52"},
+        { "subject": "Lịch sử tâm lý học", "periods": [6,7], "type": "all","room":"C.III.3" ,"color":"#30424e"},
+        { "subject": "Sinh lý học thần kinh", "periods": [8,9], "type": "all","room":"C.III.5" ,"color":"#524833"}
       ],
       "Thursday": [
-        { "subject": "Tin học", "periods": [3,4], "type": "odd","room":"E.II.1" ,"color":"#fff"}
+        { "subject": "Tin học", "periods": [3,4], "type": "odd","room":"E.II.1" ,"color":"#523333"}
       ],
       "Friday": [
-        { "subject": "Giáo dục thể chất 1", "periods": [1,2], "type": "all","room":"TD.10" ,"color":"#fff"},
-        { "subject": "Tâm lý học đại cương", "periods": [8,10], "type": "all","room":"P.I.5" ,"color":"#fff"}
+        { "subject": "Giáo dục thể chất 1", "periods": [1,2], "type": "all","room":"TD.10" ,"color":"#335237"},
+        { "subject": "Tâm lý học đại cương", "periods": [8,10], "type": "all","room":"P.I.5" ,"color":"#52334d"}
       ],
       "Saturday": [],
       "Sunday": []
