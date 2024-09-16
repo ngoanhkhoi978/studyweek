@@ -8,7 +8,7 @@ import data from '../datas/datas.json'
 
 function TimeTable() {
     const [schedule, setSchedule] = useState({});
-    const [startOfWeek, setStartOfWeek] = useState([0, '2024/01/01']);
+    const [startOfWeek, setStartOfWeek] = useState(data.startOfWeek);
 
     const week = getCurrentWeek(startOfWeek);
     const weekDays = getWeekDays();
@@ -28,7 +28,7 @@ function TimeTable() {
                     <tr>
                         <th></th>
                         <th className="text-rose-900 text-[22px]">
-                            <span className="hidden md:inline">Tuần</span> {startOfWeek[0]}
+                            <span className="hidden md:inline">Tuần</span> {week}
                         </th>
                         {dayOfWeek.map((value, index) => (
                             <th key={index} className={clsx({
