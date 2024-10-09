@@ -1,14 +1,14 @@
-import React, {useCallback, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import clsx from 'clsx';
 
-import { getCurrentWeek, getWeekDays, isToday } from "../utils/dateUtils";
-import data from '../datas/datas.json'
-
-
+import { getCurrentWeek, getWeekDays, isToday } from '../utils/dateUtils';
+import data from '../datas/datas.json';
 
 function TimeTable() {
     const [schedule, setSchedule] = useState({});
     const [startOfWeek, setStartOfWeek] = useState(data.startOfWeek);
+
+    console.log('re-render');
 
     const week = getCurrentWeek(startOfWeek);
     const weekDays = getWeekDays();
@@ -31,11 +31,15 @@ function TimeTable() {
                             <span className="hidden md:inline">Tuần</span> {week}
                         </th>
                         {dayOfWeek.map((value, index) => (
-                            <th key={index} className={clsx({
-                                "bg-[#e1e5e9]": isToday(weekDays[index])
-                            })}>
+                            <th
+                                key={index}
+                                className={clsx({
+                                    'bg-[#e1e5e9]': isToday(weekDays[index]),
+                                })}
+                            >
                                 <div className="text-[16px] font-sans text-slate-500 uppercase">
-                                    {value}<br /> {weekDays[index]}
+                                    {value}
+                                    <br /> {weekDays[index]}
                                 </div>
                             </th>
                         ))}
@@ -47,11 +51,13 @@ function TimeTable() {
 
                         return (
                             <tr className="border-b-[1px]" key={rowIndex}>
-                                <td className={clsx({
-                                    "bg-blue-900": rowIndex <= 5 && rowIndex >= 1,
-                                    "bg-red-800": rowIndex >= 6 && rowIndex <= 10,
-                                    "bg-slate-500": rowIndex >= 11 && rowIndex <= 13
-                                })}></td>
+                                <td
+                                    className={clsx({
+                                        'bg-blue-900': rowIndex <= 5 && rowIndex >= 1,
+                                        'bg-red-800': rowIndex >= 6 && rowIndex <= 10,
+                                        'bg-slate-500': rowIndex >= 11 && rowIndex <= 13,
+                                    })}
+                                ></td>
                                 <td className="text-center py-3 font-bold text-[16px] font-sans text-slate-500">
                                     <span className="hidden md:inline">Tiết</span> {rowIndex + 1}
                                 </td>
@@ -63,12 +69,14 @@ function TimeTable() {
                                     }
 
                                     let hasSubject = false;
-                                    
+
                                     for (const subject of schedule[dow]) {
-                                        if (subject.periods[0] === rowIndex + 1 &&
-                                            (subject.type === "all" ||
-                                            (subject.type === "odd" && week % 2 === 1) ||
-                                            (subject.type === "even" && week % 2 === 0))) {
+                                        if (
+                                            subject.periods[0] === rowIndex + 1 &&
+                                            (subject.type === 'all' ||
+                                                (subject.type === 'odd' && week % 2 === 1) ||
+                                                (subject.type === 'even' && week % 2 === 0))
+                                        ) {
                                             hasSubject = true;
 
                                             columnSpans[i] = subject.periods[1] - subject.periods[0];
@@ -76,10 +84,16 @@ function TimeTable() {
                                             return (
                                                 <td
                                                     key={`${dow}-${subject.subject}-${rowIndex}`}
-                                                    style={{ background: subject.color, textShadow: "2px 1px 2px rgba(0, 0, 0, 0.5)" }}
-                                                    className={clsx("min-h-40 font-medium text-[18px] max-w-px overflow-hidden text-center align-middle text-[#fff] py-5 px-3 shadow-black rounded-md", {
-                                                        "today-column": isToday(weekDays[i])
-                                                    })}
+                                                    style={{
+                                                        background: subject.color,
+                                                        textShadow: '2px 1px 2px rgba(0, 0, 0, 0.5)',
+                                                    }}
+                                                    className={clsx(
+                                                        'min-h-40 font-medium text-[18px] max-w-px overflow-hidden text-center align-middle text-[#fff] py-5 px-3 shadow-black rounded-md',
+                                                        {
+                                                            'today-column': isToday(weekDays[i]),
+                                                        },
+                                                    )}
                                                     rowSpan={subject.periods[1] - subject.periods[0] + 1}
                                                 >
                                                     {subject.subject}
@@ -93,9 +107,12 @@ function TimeTable() {
                                     if (!hasSubject) {
                                         currentColumn++;
                                         return (
-                                            <td key={`${dow}-empty-${rowIndex}`} className={clsx({
-                                                "bg-[#f8ffdc]": isToday(weekDays[i])
-                                            })}></td>
+                                            <td
+                                                key={`${dow}-empty-${rowIndex}`}
+                                                className={clsx({
+                                                    'bg-[#f8ffdc]': isToday(weekDays[i]),
+                                                })}
+                                            ></td>
                                         );
                                     }
                                 })}
@@ -107,7 +124,5 @@ function TimeTable() {
         </div>
     );
 }
-
-
 
 export default TimeTable;
