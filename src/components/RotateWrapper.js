@@ -1,28 +1,21 @@
 import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
 
-function RotateWrapper({ children }) {
-    const [rotation, setRotation] = useState(0);
-    const [speed, setSpeed] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            console.log('bo m dang chay');
-            setRotation((pre) => pre + speed);
-        }, 100);
-        return () => {
-            clearInterval(interval);
-        };
-    });
-
+function RotateWrapper({ children, isRotate = true, duration = 1, ...props }) {
     return (
-        <div
-            className="relative"
-            onClick={() => {
-                setSpeed(100);
-            }}
-        >
-            <motion.div animate={{ rotate: rotation }} className="absolute relative">
+        <div className="relative" {...props}>
+            <motion.div
+                animate={isRotate ? { rotate: [0, 360], scale: [0.5, 3, 0.5] } : { rotate: 0, scale: 1 }}
+                className="absolute relative"
+                transition={
+                    isRotate
+                        ? {
+                              repeat: Infinity, // Lặp vô hạn
+                              duration: duration,
+                              ease: 'linear',
+                          }
+                        : { duration: 0 }
+                }
+            >
                 {children}
             </motion.div>
         </div>

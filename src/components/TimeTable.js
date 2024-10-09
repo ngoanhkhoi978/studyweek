@@ -8,8 +8,6 @@ function TimeTable() {
     const [schedule, setSchedule] = useState({});
     const [startOfWeek, setStartOfWeek] = useState(data.startOfWeek);
 
-    console.log('re-render');
-
     const week = getCurrentWeek(startOfWeek);
     const weekDays = getWeekDays();
     const dayOfWeek = ['Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy', 'CN'];
